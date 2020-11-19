@@ -77,6 +77,11 @@ func TestInnov(t *testing.T) {
 	if len(innovDB) != 3 || innovID != 3 || len(innovMap) != 3 {
 		t.Error("Innovation global variable error, expected 3 3 3, got:", len(innovDB), innovID, len(innovMap))
 	}
+
+	g[0].MutateGenomeNode()
+	if len(innovDB) != 5 || innovID != 5 || len(innovMap) != 5 {
+		t.Error("Innovation global variable error, expected 5 5 5, got:", len(innovDB), innovID, len(innovMap))
+	}
 }
 
 func TestDisjointExcessMatching(t *testing.T) {
@@ -130,7 +135,38 @@ func TestDisjointExcessMatching(t *testing.T) {
 }
 
 func TestCrossover(t *testing.T) {
+	g := InitNEAT(2, 2, 1)
+	ninput := 0
+	nhidden := 0
+	noutput := 0
+	
+	g[0].MutateGenomeConnect()
+	g[0].MutateGenomeConnect()
+	g[0].MutateGenomeConnect()
+	g[1].MutateGenomeConnect()
+	g[1].MutateGenomeConnect()
+	g[1].MutateGenomeConnect()
+	
+	g[0].MutateGenomeNode()
+	g[0].fitness = 999
+	g[1].fitness = 0
 
+	c := CrossOver(g[0], g[1])
+	for _, node := range c.nodes {
+		switch node.types {
+		case INPUT:
+			ninput++
+		case HIDDEN:
+			nhidden++
+		case OUTPUT:
+			noutput++
+		}
+	}
+	
+	if ninput != 3 || nhidden!= 1 || noutput != 1 {
+		t.Error("Expected 3 1 1, got ", ninput, nhidden, noutput)
+	}
+	
 }
 
 
