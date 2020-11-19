@@ -112,9 +112,9 @@ func CreateGenome(input, output int) Genome {
 		globalNodesPos[nodeID] = graphPos{x:sqrSize, y:int32(i+1)*sqrSize+sqrSize*int32(i+1)}
 		addNode(&genome, INPUT)
 	}
-	tmp := genome.nodes[input-1]
-	tmp.val = 1.0
-	genome.nodes[input-1] = tmp
+	bias := genome.nodes[input-1]
+	bias.val = 1.0
+	genome.nodes[input-1] = bias
 	for i := 0; i < output; i++ {
 		globalNodesPos[nodeID] = graphPos{x:winWidth-sqrSize*2, y:int32(i+1)*sqrSize+sqrSize*int32(i+1)}
 		addNode(&genome, OUTPUT)

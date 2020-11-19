@@ -97,8 +97,8 @@ func InitNEAT(pop, input, output int) []Genome {
 	innovDB = make(map[inOut]int)
 	innovMap = make(map[int]inOut)
 	
-	// Why input++ ???
-	// input++
+	// Add an extra input for the bias node
+	input++
 
 	numberInputs = input
 	numberOuputs = output

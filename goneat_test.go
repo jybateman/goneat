@@ -20,8 +20,8 @@ func TestGenomeCreation(t *testing.T) {
 			noutput++
 		}
 	}
-	if ninput != 10 || nhidden!= 0 || noutput != 5 {
-		t.Error("Expected 10 0 5, got ", ninput, nhidden, noutput)
+	if ninput != 11 || nhidden!= 0 || noutput != 5 {
+		t.Error("Expected 11 0 5, got ", ninput, nhidden, noutput)
 	}
 	// for i := range g.input {
 	// 	if i > 9 {
@@ -67,7 +67,7 @@ func TestGenomeMutateNodeInputOutput(t *testing.T) {
 }
 
 func TestInnov(t *testing.T) {
-	g := InitNEAT(2, 3, 1)
+	g := InitNEAT(2, 2, 1)
 	g[0].MutateGenomeConnect()
 	g[0].MutateGenomeConnect()
 	g[0].MutateGenomeConnect()
