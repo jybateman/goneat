@@ -34,8 +34,8 @@ func CrossOver(g1, g2 Genome) Genome {
 		g1, g2 = g2, g1
 	}
 	child.nodes = make(map[int]Node)
-	for innov := 0; innov < numberInputs+numberOuputs; innov++ {
-		child.nodes[innov] = g1.nodes[innov]
+	for initNodes := 0; initNodes < numberInputs+numberOuputs; initNodes++ {
+		child.nodes[initNodes] = g1.nodes[initNodes]
 	}
 	child.connects = make(map[inOut]Connect)
 	for key := range g1.connects {
@@ -62,8 +62,8 @@ func CrossOverRand(g1, g2 Genome) Genome {
 	}
 
 	child.nodes = make(map[int]Node)
-	for innov := 0; innov < numberInputs+numberOuputs; innov++ {
-		child.nodes[innov] = g1.nodes[innov]
+	for initNodes := 0; initNodes < numberInputs+numberOuputs; initNodes++ {
+		child.nodes[initNodes] = g1.nodes[initNodes]
 	}
 	dem := getDisjointsExcessMatching(g1, g2)
 	child.connects = make(map[inOut]Connect)
