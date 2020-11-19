@@ -96,7 +96,10 @@ func InitNEAT(pop, input, output int) []Genome {
 	genration = 0
 	innovDB = make(map[inOut]int)
 	innovMap = make(map[int]inOut)
-	input++
+	
+	// Why input++ ???
+	// input++
+
 	numberInputs = input
 	numberOuputs = output
 	populationSize = pop

@@ -5,13 +5,12 @@ import (
 )
 
 func TestGenomeCreation(t *testing.T) {
-	InitNEAT(1, 10, 5)
-	g := CreateGenome(10, 5)
+	g := InitNEAT(1, 10, 5)
 	ninput := 0
 	nhidden := 0
 	noutput := 0
 
-	for _, node := range g.nodes {
+	for _, node := range g[0].nodes {
 		switch node.types {
 		case INPUT:
 			ninput++
@@ -68,7 +67,7 @@ func TestGenomeMutateNodeInputOutput(t *testing.T) {
 }
 
 func TestInnov(t *testing.T) {
-	g := InitNEAT(2, 2, 1)
+	g := InitNEAT(2, 3, 1)
 	g[0].MutateGenomeConnect()
 	g[0].MutateGenomeConnect()
 	g[0].MutateGenomeConnect()
