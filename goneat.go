@@ -88,7 +88,7 @@ func CrossOverRand(g1, g2 Genome) Genome {
 func InitNEAT(pop, input, output int) []Genome {
 	var genomes []Genome
 	s := rand.NewSource(time.Now().UnixNano())
-    globalRand = rand.New(s)
+	globalRand = rand.New(s)
 
 	//InitGraph()
 

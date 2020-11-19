@@ -4,7 +4,7 @@ import (
 	"log"
 	// "strconv"
 
-    "github.com/veandco/go-sdl2/sdl"
+	"github.com/veandco/go-sdl2/sdl"
 	"github.com/veandco/go-sdl2/ttf"
 )
 
@@ -110,36 +110,36 @@ func DrawGraph(g *Genome) {
 
 // Initilise the window and rederer
 func InitGraph() {
-    globalWindow, err := sdl.CreateWindow(winTitle, sdl.WINDOWPOS_UNDEFINED, sdl.WINDOWPOS_UNDEFINED,
-        winWidth, winHeight, sdl.WINDOW_SHOWN)
-    if err != nil {
-        log.Fatalf("Failed to create window: %s\n", err)
-    }
-    // GlobalWindow.SetWindowOpacity(0.5)
-    // defer GlobalWindow.Destroy()
+	globalWindow, err := sdl.CreateWindow(winTitle, sdl.WINDOWPOS_UNDEFINED, sdl.WINDOWPOS_UNDEFINED,
+		winWidth, winHeight, sdl.WINDOW_SHOWN)
+	if err != nil {
+		log.Fatalf("Failed to create window: %s\n", err)
+	}
+	// GlobalWindow.SetWindowOpacity(0.5)
+	// defer GlobalWindow.Destroy()
 
-    globalRenderer, err = sdl.CreateRenderer(globalWindow, -1, sdl.RENDERER_ACCELERATED)
-    if err != nil {
-        log.Fatalf("Failed to create renderer: %s\n", err)
+	globalRenderer, err = sdl.CreateRenderer(globalWindow, -1, sdl.RENDERER_ACCELERATED)
+	if err != nil {
+		log.Fatalf("Failed to create renderer: %s\n", err)
 
-    }
-    err = globalRenderer.SetDrawBlendMode(sdl.BLENDMODE_BLEND)
-    if err != nil {
-        log.Fatalf("Failed to set blend mode: %s\n", err)
+	}
+	err = globalRenderer.SetDrawBlendMode(sdl.BLENDMODE_BLEND)
+	if err != nil {
+		log.Fatalf("Failed to set blend mode: %s\n", err)
 
-    }
+	}
 
 	// globalNodesPos = make(map[int]graphPos)
 
 	// TEST
 	ttf.Init()
-    if err != nil {
-        log.Fatalf("Failed to create font: %s\n", err)
-    }
+	if err != nil {
+		log.Fatalf("Failed to create font: %s\n", err)
+	}
 
-    GlobalFont, err = ttf.OpenFont("/usr/share/fonts/truetype/open-sans-elementary/OpenSans-Regular.ttf", 25)
-    if err != nil {
-        log.Fatalf("Failed to create font: %s\n", err)
-    }
+	GlobalFont, err = ttf.OpenFont("/usr/share/fonts/truetype/open-sans-elementary/OpenSans-Regular.ttf", 25)
+	if err != nil {
+		log.Fatalf("Failed to create font: %s\n", err)
+	}
 	// END TEST
 }
