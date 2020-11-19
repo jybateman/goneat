@@ -21,9 +21,9 @@ func TestGenomeCreation(t *testing.T) {
 			noutput++
 		}
 	}
-	// if ninput != 10 || nhidden!= 0 || noutput != 5 {
-	// 	t.Error("Expected 10 0 5, got ", len(g.input), len(g.hidden), len(g.output))
-	// }
+	if ninput != 10 || nhidden!= 0 || noutput != 5 {
+		t.Error("Expected 10 0 5, got ", ninput, nhidden, noutput)
+	}
 	// for i := range g.input {
 	// 	if i > 9 {
 	// 		t.Errorf("Expected id to be less than 10, got %d", i)
