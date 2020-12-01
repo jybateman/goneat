@@ -53,6 +53,7 @@ func setAdjAvgFitness(genomes []Genome) {
 	}
 }
 
+// Remove species that have not made any progress for extinctSpecies
 func removeExtinctSpecies() {
 	for sIdx := 0; sIdx < len(speciesList); sIdx++ {
 		if speciesList[sIdx].stall > extinctSpecies || speciesList[sIdx].genomes == nil || len(speciesList[sIdx].genomes) < 1 {
