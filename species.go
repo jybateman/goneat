@@ -13,13 +13,14 @@ type Species struct {
 	genomes []int
 	averageFitness float64
 	name string
+	protect bool
 }
 
 func GetSpecies() []Species {
 	return speciesList
 }
 
-// returns the fittest genome in a species
+// returns the fittest genome in a species (sIdx)
 func getStrongest(sIdx int, genomes []Genome) int {
 	strong := 0
 	fitness := 0
@@ -63,6 +64,7 @@ func removeExtinctSpecies() {
 	}
 }
 
+// Updates the stall counter for each species
 func checkSpeciesProgess(genomes []Genome) {
 	for sIdx := 0; sIdx < len(speciesList); sIdx++ {
 		progress := false
