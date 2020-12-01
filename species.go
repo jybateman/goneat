@@ -20,6 +20,22 @@ func GetSpecies() []Species {
 	return speciesList
 }
 
+// Loops through all the species and protects the species with the strongest genome from going extinct
+func setProtectedSpecies(genomes []Genome) {
+	strong := 0
+	fitness := 0
+	for sIdx := 0; sIdx < len(speciesList); sIdx++ {
+		speciesList[sIdx].protect = false
+		for i := range speciesList[sIdx].genomes {
+			if genomes[speciesList[sIdx].genomes[i]].fitness > fitness {
+				fitness = genomes[speciesList[sIdx].genomes[i]].fitness
+				strong = sIdx
+			}
+		}
+	}
+	speciesList[strong].protect = true	
+}
+
 // returns the fittest genome in a species (sIdx)
 func getStrongest(sIdx int, genomes []Genome) int {
 	strong := 0
@@ -57,7 +73,7 @@ func setAdjAvgFitness(genomes []Genome) {
 // Remove species that have not made any progress for extinctSpecies
 func removeExtinctSpecies() {
 	for sIdx := 0; sIdx < len(speciesList); sIdx++ {
-		if speciesList[sIdx].stall > extinctSpecies || speciesList[sIdx].genomes == nil || len(speciesList[sIdx].genomes) < 1 {
+		if !speciesList[sIdx].protect && (speciesList[sIdx].stall > extinctSpecies || speciesList[sIdx].genomes == nil || len(speciesList[sIdx].genomes) < 1) {
 			speciesList = append(speciesList[:sIdx], speciesList[sIdx+1:]...)
 			sIdx--
 		}
@@ -103,7 +119,7 @@ func assignSpecies(genomes []Genome) {
 			}
 		}
 		if !found {
-			speciesList = append(speciesList, Species{mascot: genomes[gIdx], maxFitness: 0.0, stall: 0})
+			speciesList = append(speciesList, Species{mascot: genomes[gIdx], maxFitness: 0.0, stall: 0, protect: false})
 			speciesList[sIdx].genomes = append(speciesList[sIdx].genomes, gIdx)
 		} else {
 			speciesList[sIdx].genomes = append(speciesList[sIdx].genomes, gIdx)

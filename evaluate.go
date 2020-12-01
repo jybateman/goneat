@@ -68,6 +68,7 @@ func NextGeneration(genomes []Genome) {
 	var nextGenomes []Genome
 
 	checkSpeciesProgess(genomes)
+	setProtectedSpecies(genomes)
 	removeExtinctSpecies()
 	setAdjAvgFitness(genomes)
 	fitTotal := getTotalFitness()
